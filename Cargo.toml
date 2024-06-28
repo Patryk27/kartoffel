@@ -1,0 +1,11 @@
+[package]
+name = "kartoffel-example"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "kartoffel"
+path = "src/main.rs"
+
+[dependencies]
+kartoffel = { git = "https://github.com/Patryk27/kartoffels" }
