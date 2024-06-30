@@ -9,3 +9,4 @@ path = "src/main.rs"
 
 [dependencies]
 kartoffel = { git = "https://github.com/Patryk27/kartoffels" }
+# kartoffel = { path = "../kartoffels/backend/crates/kartoffel" }
