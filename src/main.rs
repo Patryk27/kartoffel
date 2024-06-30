@@ -11,9 +11,7 @@ fn main() {
         serial_send('.');
 
         // Wait for radar to become ready
-        while !is_radar_ready() {
-            //
-        }
+        radar_wait();
 
         // Scan a 3x3 area around the bot:
         //
@@ -25,9 +23,7 @@ fn main() {
         radar_scan(3);
 
         // Wait for the scan to complete
-        while !is_radar_ready() {
-            //
-        }
+        radar_wait();
 
         // Read the scanned tiles - this will produce a 3x3 array like:
         //
@@ -49,17 +45,13 @@ fn main() {
             serial_send('!');
 
             // Wait for the arm to become ready
-            while !is_arm_ready() {
-                //
-            }
+            arm_wait();
 
             // Stab, stab, stab!
             arm_stab();
         } else {
             // Wait for the motor to become ready
-            while !is_motor_ready() {
-                //
-            }
+            motor_wait();
 
             // Move, move, move! (or rotate, rotate, rotate!)
             loop {
