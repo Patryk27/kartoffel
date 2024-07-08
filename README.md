@@ -5,24 +5,15 @@ bot.
 
 ## Usage
 
-Run:
+Run `./build` (Linux / Mac) or `build.bat` (Windows) and then upload
+`./kartoffel` to [the game](https://kartoffels.pwy.io).
 
-```
-$ cargo build --release
-```
-
-... and then upload this file to [the game](https://kartoffels.pwy.io):
-
-```
-./target/riscv64-kartoffel-bot/release/kartoffel
-```
-
-Note that this repository implements a rather bare bones robot that'll most
-likely get killed quite fast - in order to survive, get creative!
+Note that this repository implements a simple robot that'll probably get killed
+quite fast - in order to survive, get creative!
 
 ## Caveat Emptor
 
-When implementing a kartoffel you're essentially creating a **firmware**, so you
+When implementing a kartoffel you're essentially creating a firmware, so you
 don't have access to `std` - no `std::fs`, no `println!()` etc.
 
 You can communicate through `serial_send()`, though, and you can use various

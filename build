@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+cargo build --release
+cp ./target/riscv64-kartoffel-bot/release/kartoffel .
