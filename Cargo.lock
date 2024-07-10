@@ -10,8 +10,8 @@ checksum = "0c4b4d0bd25bd0b74681c0ad21497610ce1b7c91b1022cd21c80c6fbdd9476b0"
 
 [[package]]
 name = "kartoffel"
-version = "0.1.0"
-source = "git+https://github.com/Patryk27/kartoffels#b7c1da9e51075d35db914c29e036f090af98402f"
+version = "0.2.0"
+source = "git+https://github.com/Patryk27/kartoffels#c11f87bd8da8cd6b3e8f82a8c8d9d47198fff3c8"
 dependencies = [
  "spin",
  "talc",

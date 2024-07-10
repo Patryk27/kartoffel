@@ -13,67 +13,49 @@ fn main() {
         // Wait for radar to become ready
         radar_wait();
 
-        // Scan a 3x3 area around the bot:
-        //
-        // ```
-        // A B C
-        // D @ F
-        // G H I
-        // ```
-        radar_scan(3);
-
-        // Wait for the scan to complete
-        radar_wait();
-
-        // Read the scanned tiles - this will produce a 3x3 array like:
+        // Scan a 3x3 area around the bot - this will produce a 3x3 array like:
         //
         // [
-        //   ['A', 'B', 'C'],
-        //   ['D', '@', 'F'],
-        //   ['G', 'H', 'I'],
+        //   [' ', ' ', ' '],
+        //   [' ', '@', ' '],
+        //   [' ', ' ', ' '],
         // ]
-        //
-        // (ofc. instead of 'A' there's going to be '.' if there's a floor, ' '
-        // if there's no tile etc.)
-        let radar = radar_read::<3>();
+        let scan = radar_scan::<3>();
 
         // If there's a bot right in front of us, kill them!
         //
         // Otherwise just go to a random direction, if that direction is
         // walkable.
-        if radar[0][1] == '@' {
+        if scan[0][1] == '@' {
             serial_send('!');
 
-            // Wait for the arm to become ready
             arm_wait();
-
-            // Stab, stab, stab!
             arm_stab();
         } else {
-            // Wait for the motor to become ready
             motor_wait();
 
-            // Move, move, move! (or rotate, rotate, rotate!)
             loop {
                 random = rand(random);
 
-                match random % 3 {
-                    // Go forward (if the tile in front of us is passable)
-                    0 if radar[0][1] != ' ' => {
+                match random % 10 {
+                    // 80% chance to go forward (if the tile in front of us is
+                    // passable)
+                    0..=7 if scan[0][1] != ' ' => {
                         serial_send('^');
                         motor_step();
                         break;
                     }
 
-                    // Turn left (if it makes sense to later move forward there)
-                    1 if radar[1][0] != ' ' => {
+                    // 10% chance to turn left (if it makes sense to later move
+                    // forward there)
+                    8 if scan[1][0] != ' ' => {
                         serial_send('<');
                         motor_turn(-1);
                         break;
                     }
 
-                    // Turn right (ditto)
-                    2 if radar[1][2] != ' ' => {
+                    // 10% chance to turn right (ditto)
+                    9 if scan[1][2] != ' ' => {
                         serial_send('>');
                         motor_turn(1);
                         break;
