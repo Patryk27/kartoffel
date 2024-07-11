@@ -5,8 +5,8 @@ bot.
 
 ## Usage
 
-Run `./build` (Linux / Mac) or `build.bat` (Windows) and then upload
-`./kartoffel` to [the game](https://kartoffels.pwy.io).
+Clone repository, run `./build` (Linux / Mac) or `./build.bat` (Windows) and
+then upload `./kartoffel` to [the game](https://kartoffels.pwy.io).
 
 Note that this repository implements a simple robot that'll probably get killed
 quite fast - in order to survive, get creative!
@@ -14,10 +14,9 @@ quite fast - in order to survive, get creative!
 ## Caveat Emptor
 
 When implementing a kartoffel you're essentially creating a firmware, so you
-don't have access to `std` - no `std::fs`, no `println!()` etc.
-
-You can communicate through `serial_send()`, though, and you can use various
-fancy structures like `Vec` through the `alloc` crate.
+don't have access to `std` - no `std::fs`, no `println!()` etc. You can
+communicate through `serial_send()`, though, and you can use various fancy
+structures like `Vec` through the `alloc` crate.
 
 You're given 64 KHz CPU and 128 KiB of RAM, have fun.
 
