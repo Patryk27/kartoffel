@@ -1,0 +1,4 @@
+{
+    "rust-analyzer.cargo.target": "misc/riscv64-kartoffel-bot.json",
+    "rust-analyzer.checkOnSave.allTargets": false
+}

@@ -3,4 +3,4 @@
 set -e
 
 cargo build --release
-cp ./target/riscv64-kartoffel-bot/release/kartoffel .
+cp ./target/riscv64-kartoffel-bot/release/kartoffel-bot kartoffel

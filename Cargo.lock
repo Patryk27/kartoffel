@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "kartoffel-example"
+name = "kartoffel-bot"
 version = "0.1.0"
 dependencies = [
  "kartoffel",
