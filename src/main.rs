@@ -20,7 +20,7 @@ fn main() {
         //   [' ', '@', ' '],
         //   [' ', ' ', ' '],
         // ]
-        let scan = radar_scan::<3>();
+        let scan = radar_scan_3x3();
 
         // If there's a bot right in front of us, kill them!
         //
@@ -28,7 +28,6 @@ fn main() {
         // walkable.
         if scan[0][1] == '@' {
             serial_send('!');
-
             arm_wait();
             arm_stab();
         } else {
@@ -50,14 +49,14 @@ fn main() {
                     // forward there)
                     8 if scan[1][0] != ' ' => {
                         serial_send('<');
-                        motor_turn(-1);
+                        motor_turn_left();
                         break;
                     }
 
                     // 10% chance to turn right (ditto)
                     9 if scan[1][2] != ' ' => {
                         serial_send('>');
-                        motor_turn(1);
+                        motor_turn_right();
                         break;
                     }
 
