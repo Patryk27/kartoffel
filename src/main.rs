@@ -5,71 +5,43 @@ use kartoffel::*;
 
 #[no_mangle]
 fn main() {
-    let mut random = timer_seed() as u64;
-
     loop {
-        serial_send('.');
-
-        // Wait for radar to become ready
         radar_wait();
 
-        // Scan a 3x3 area around the bot - this will produce a 3x3 array like:
-        //
-        // [
-        //   [' ', ' ', ' '],
-        //   [' ', '@', ' '],
-        //   [' ', ' ', ' '],
-        // ]
-        let scan = radar_scan_3x3();
+        let scan = radar_scan_5x5();
 
-        // If there's a bot right in front of us, kill them!
-        //
-        // Otherwise just go to a random direction, if that direction is
-        // walkable.
-        if scan[0][1] == '@' {
-            serial_send('!');
+        // If someone's directly in front of us, stab, stab, stab!
+        if scan[1][2] == '@' {
             arm_wait();
             arm_stab();
-        } else {
             motor_wait();
-
-            loop {
-                random = rand(random);
-
-                match random % 10 {
-                    // 80% chance to go forward (if the tile in front of us is
-                    // passable)
-                    0..=7 if scan[0][1] != ' ' => {
-                        serial_send('^');
-                        motor_step();
-                        break;
-                    }
-
-                    // 10% chance to turn left (if it makes sense to later move
-                    // forward there)
-                    8 if scan[1][0] != ' ' => {
-                        serial_send('<');
-                        motor_turn_left();
-                        break;
-                    }
-
-                    // 10% chance to turn right (ditto)
-                    9 if scan[1][2] != ' ' => {
-                        serial_send('>');
-                        motor_turn_right();
-                        break;
-                    }
-
-                    _ => (),
-                }
-            }
+            motor_step();
+            continue;
         }
-    }
-}
 
-/// Gets the next pseudo-random number using a linear congruential generator.
-fn rand(mut r: u64) -> u64 {
-    r *= 1664525;
-    r += 1013904223;
-    r
+        // If someone's to our left, turn left
+        if scan[2][1] == '@' || scan[2][0] == '@' {
+            motor_turn_left();
+            motor_wait();
+            continue;
+        }
+
+        // If someone's to our right, turn right
+        if scan[2][3] == '@' || scan[2][4] == '@' {
+            motor_turn_right();
+            motor_wait();
+            continue;
+        }
+
+        // If someone's behind us, turn left (or right, would be the same)
+        if scan[3][2] == '@' || scan[4][2] == '@' {
+            motor_turn_left();
+            motor_wait();
+            continue;
+        }
+
+        // Otherwise continue moving in our current direction
+        motor_wait();
+        motor_step();
+    }
 }
