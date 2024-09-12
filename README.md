@@ -5,8 +5,8 @@ bot
 
 ## usage
 
-clone this repository, run `./build` (linux / mac) or `./build.bat` (windows)
-and then upload `./kartoffel` into [the game](https://kartoffels.pwy.io)
+clone this repository, run `./build` and then upload `./kartoffel` into
+[the game](https://kartoffels.pwy.io)
 
 (if you're more into terminals, there's `ssh kartoffels.pwy.io`)
 
