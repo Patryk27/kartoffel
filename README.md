@@ -10,16 +10,14 @@ clone this repository, run `./build` and then upload `./kartoffel` into
 
 (if you're more into terminals, there's `ssh kartoffels.pwy.io`)
 
-note that this repository provides a skeleton robot meant for the in-game
+note that this repository provides a skeleton robot meant mostly for the in-game
 tutorial - it probably won't survive long when deployed onto the battlefield
 
 ## caveat emptor
 
 when creating a kartoffel you're implementing a firmware, so you don't have
-access to `std` - no `std::fs`, no `println!()` etc.
-
-you can communicate through `serial_send()`, though, and you can use various
-fancy things like `vec` or `format!()` via the `alloc` crate.
+access to `std` - no `std::fs`, no `println!()` etc. you can communicate through `serial_send()`, though, and you can use various fancy things like `vec` or
+`format!()` via the `alloc` crate, just add `extern crate alloc;`
 
 you're given 64 khz cpu and 128 kib of ram, godspeed
 
