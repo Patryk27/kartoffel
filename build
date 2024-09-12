@@ -4,3 +4,32 @@ set -e
 
 cargo build --release
 cp ./target/riscv64-kartoffel-bot/release/kartoffel-bot kartoffel
+
+if [[ "$1" == "--copy" ]]; then
+    # Mac
+    if [[ -x "$(command -v pbcopy)" ]]; then
+        base64 kartoffel | pbcopy
+        exit
+    fi
+
+    # Wayland
+    if [[ -x "$(command -v wl-copy)" ]]; then
+        base64 kartoffel | wl-copy
+        exit
+    fi
+
+    # Xorg
+    if [[ -x "$(command -v xclip)" ]]; then
+        base64 kartoffel | xclip -sel clip
+        exit
+    fi
+
+    echo "err: can't figure out how to copy stuff to clipboard"
+    echo ""
+    echo "if you have a moment, please report it at:"
+    echo "    https://github.com/patryk27/kartoffel"
+    echo ""
+    echo "... and provide a bit of information on your setup (what's your system, desktop manager etc.)"
+
+    exit 1
+fi

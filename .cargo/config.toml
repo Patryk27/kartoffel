@@ -2,7 +2,7 @@
 target = "misc/riscv64-kartoffel-bot.json"
 
 [unstable]
-build-std = ["core"]
+build-std = ["alloc", "core"]
 build-std-features = ["compiler-builtins-mem"]
 
 [target.riscv64-kartoffel-bot]

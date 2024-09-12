@@ -1,15 +1,18 @@
 # Kartoffel
 
-Starter pack for a 🥔 [kartoffels](https://github.com/Patryk27/kartoffels/) 🥔
+Starter pack for a 🥔 [kartoffels](https://github.com/Patryk27/kartoffels) 🥔
 bot.
 
 ## Usage
 
-Clone repository, run `./build` (Linux / Mac) or `./build.bat` (Windows) and
-then upload `./kartoffel` to [the game](https://kartoffels.pwy.io).
+Clone this repository, run `./build` (Linux / Mac) or `./build.bat` (Windows)
+and then upload `./kartoffel` into [the game](https://kartoffels.pwy.io).
 
-Note that this repository implements a simple robot that'll probably get killed
-quite fast - in order to survive, get creative!
+(if you're more into terminals, go with `ssh kartoffels.pwy.io`)
+
+Note that this repository provides a skeleton robot meant for the in-game
+tutorial - it probably won't survive long when deployed directly onto the
+battlefield.
 
 ## Caveat Emptor
 
