@@ -8,7 +8,7 @@ cp ./target/riscv64-kartoffel-bot/release/kartoffel-bot kartoffel
 if [[ "$1" == "--copy" ]]; then
     # Mac
     if [[ -x "$(command -v pbcopy)" ]]; then
-        base64 kartoffel | pbcopy
+        base64 -i kartoffel | pbcopy
         exit
     fi
 
