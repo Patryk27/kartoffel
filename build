@@ -54,7 +54,7 @@ if [[ "$1" == "--upload" ]]; then
             -w "%{http_code}" \
             -X POST \
             -T kartoffel \
-            "http://localhost:1313/sessions/$2/bots"
+            "https://kartoffels.pwy.io/sessions/$2/bots"
     )
 
     case "$status" in
@@ -80,7 +80,7 @@ if [[ "$1" == "--upload" ]]; then
                 -v \
                 -X POST \
                 -T kartoffel \
-                "http://localhost:1313/sessions/$2/bots"
+                "https://kartoffels.pwy.io/sessions/$2/bots"
 
             ;;
     esac
