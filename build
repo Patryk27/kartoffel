@@ -33,3 +33,55 @@ if [[ "$1" == "--copy" ]]; then
 
     exit 1
 fi
+
+if [[ "$1" == "--upload" ]]; then
+    if [[ -z "$2" ]]; then
+        echo "err: missing session id"
+        echo
+        echo "usage:"
+        echo "    ./build --upload <sessionId>"
+        echo
+        echo "e.g.:"
+        echo "    ./build --upload 1234-1234-1234-1234"
+
+        exit 1
+    fi
+
+    status=$(
+        curl \
+            -s \
+            -o /dev/null \
+            -w "%{http_code}" \
+            -X POST \
+            -T kartoffel \
+            "http://localhost:1313/sessions/$2/bots"
+    )
+
+    case "$status" in
+        "201")
+            echo "ok, bot uploaded"
+            ;;
+
+        "404")
+            echo "err: upload not expected, no such session exists"
+            ;;
+
+        "410")
+            echo "err: upload not expected - open the uploading dialog in game and try again"
+            ;;
+
+        *)
+            echo "err: couldn't upload the bot - retrying with more verbosity"
+            echo
+
+            sleep 2
+
+            curl \
+                -v \
+                -X POST \
+                -T kartoffel \
+                "http://localhost:1313/sessions/$2/bots"
+
+            ;;
+    esac
+fi
