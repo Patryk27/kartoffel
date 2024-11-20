@@ -2,7 +2,7 @@
 
 This file contains solutions for the tutorial.
 
-## Commenting
+## Commented-out
 
 ```rust
 #[no_mangle]
@@ -23,7 +23,7 @@ fn main() {
 }
 ```
 
-## Radaring
+## Line-follower
 
 ```rust
 #[no_mangle]
@@ -33,13 +33,13 @@ fn main() {
 
         let scan = radar_scan_3x3();
 
-        if scan[0][1] == '.' {
+        if scan.at(0, -1) == '.' {
             motor_wait();
             motor_step();
-        } else if scan[1][0] == '.' {
+        } else if scan.at(-1, 0) == '.' {
             motor_wait();
             motor_turn_left();
-        } else if scan[1][2] == '.' {
+        } else if scan.at(1, 0) == '.' {
             motor_wait();
             motor_turn_right();
         }
@@ -47,7 +47,7 @@ fn main() {
 }
 ```
 
-## Stabbing
+## Enemy-stabber
 
 ```rust
 #[no_mangle]
@@ -57,13 +57,13 @@ fn main() {
 
         let scan = radar_scan_3x3();
 
-        if scan[0][1] == '@' {
+        if scan.at(0, -1) == '@' {
             arm_wait();
             arm_stab();
-        } else if scan[1][0] == '@' {
+        } else if scan.at(-1, 0) == '@' {
             motor_wait();
             motor_turn_left();
-        } else if scan[1][2] == '@' {
+        } else if scan.at(1, 0) == '@' {
             motor_wait();
             motor_turn_right();
         } else {
