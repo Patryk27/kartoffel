@@ -12,6 +12,12 @@ if [[ "$1" == "--copy" ]]; then
         exit
     fi
 
+    # WSL
+    if [[ -x "$(command -v clip.exe)" ]]; then
+        base64 kartoffel | clip.exe
+        exit
+    fi
+
     # Wayland
     if [[ -x "$(command -v wl-copy)" ]]; then
         base64 kartoffel | wl-copy
