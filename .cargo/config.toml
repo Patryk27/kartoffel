@@ -1,11 +1,11 @@
 [build]
-target = "misc/riscv64-kartoffel-bot.json"
+target = "misc/riscv32-kartoffel-bot.json"
 
 [unstable]
 build-std = ["alloc", "core"]
 build-std-features = ["compiler-builtins-mem"]
 
-[target.riscv64-kartoffel-bot]
+[target.riscv32-kartoffel-bot]
 rustflags = [
-    "-C", "link-arg=-Tmisc/riscv64-kartoffel-bot.ld",
+    "-C", "link-arg=-Tmisc/riscv32-kartoffel-bot.ld",
 ]

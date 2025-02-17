@@ -9,13 +9,13 @@ This file contains solutions for the tutorial.
 fn main() {
     loop {
         motor_wait();
-        motor_step();
+        motor_step_fw();
 
         motor_wait();
-        motor_step();
+        motor_step_fw();
 
         motor_wait();
-        motor_step();
+        motor_step_fw();
 
         motor_wait();
         // motor_turn_right();
@@ -35,7 +35,7 @@ fn main() {
 
         if scan.at(0, -1) == '.' {
             motor_wait();
-            motor_step();
+            motor_step_fw();
         } else if scan.at(-1, 0) == '.' {
             motor_wait();
             motor_turn_left();
@@ -68,7 +68,7 @@ fn main() {
             motor_turn_right();
         } else {
             motor_wait();
-            motor_step();
+            motor_step_fw();
         }
     }
 }

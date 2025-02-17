@@ -1,7 +1,7 @@
 @echo off
 
 cargo build --release || exit 1
-copy target\riscv64-kartoffel-bot\release\kartoffel-bot kartoffel || exit 1
+copy target\riscv32-kartoffel-bot\release\kartoffel-bot kartoffel || exit 1
 
 if exist kartoffel.b64 (
     del kartoffel.b64

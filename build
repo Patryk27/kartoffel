@@ -3,7 +3,7 @@
 set -e
 
 cargo build --release
-cp "${CARGO_BUILD_TARGET_DIR:-./target}/riscv64-kartoffel-bot/release/kartoffel-bot" kartoffel
+cp "${CARGO_BUILD_TARGET_DIR:-./target}/riscv32-kartoffel-bot/release/kartoffel-bot" kartoffel
 
 if [[ "$1" == "--copy" ]]; then
     # Mac
