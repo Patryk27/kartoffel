@@ -19,7 +19,7 @@ if [[ "$1" == "--copy" ]]; then
     fi
 
     # Wayland
-    if [[ -x "$(command -v wl-copy)" ]]; then
+    if [[ -x "$(command -v wl-copy)" && ( "$XDG_SESSION_TYPE" == "wayland" || -z ${WAYLAND_DISPLAY} ) ]]; then
         base64 kartoffel | wl-copy
         exit
     fi

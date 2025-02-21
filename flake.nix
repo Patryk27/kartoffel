@@ -42,6 +42,12 @@
       in
       {
         devShell = pkgs.mkShell {
+          packages = with pkgs; [
+            coreutils
+            curl
+            xclip
+            wl-clipboard
+          ];
           nativeBuildInputs = [
             toolchain
           ];
