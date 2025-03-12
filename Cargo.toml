@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-kartoffel = { git = "https://github.com/Patryk27/kartoffels" }
-# kartoffel = { path = "../kartoffels/backend/crates/kartoffel" }
+kartoffel = "0.7"
+# kartoffel = { path = "../kartoffels/app/crates/kartoffel" }
